@@ -3,11 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-.leftPart{
-    max-height: 90vh;
-    overflow: auto;
-    background: lightgoldenrodyellow;
-}
 
 .myCanvas{
     border: 0.01px solid black;
@@ -22,4 +17,7 @@
 .parentDiv{
     position: relative;
     overflow: auto;
+    height: 92vh;
+    width: 50vw;
+    background: lightgoldenrodyellow;
 }

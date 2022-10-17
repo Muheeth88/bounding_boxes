@@ -102,11 +102,8 @@ onMouseMove(event:any) {
       this.rect.width = (event.layerX ) - this.rect.startX ;
       this.rect.height = (event.layerY) - this.rect.startY ;
       this.clearCanvas();
-
-      this.selection = true
       this.ctx.strokeRect(this.rect.startX, this.rect.startY, this.rect.width, this.rect.height);
-
-}
+    }
 }
 
 }
