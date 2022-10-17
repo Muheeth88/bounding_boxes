@@ -27,14 +27,16 @@ ngOnInit(): void {
   this.ctx.strokeStyle = "blue"
   this.ctx.globalAlpha = 0.3;
   this.ctx.setLineDash([6]);
+  
   // -------------------- To  view all bounding Boxes (static)
     for (let i = 0; i < coordinates.length; i++) {
       let obj = coordinates[i];
-      this.ctx.fillRect(obj.coordinates[0]*this.sizeFactor,obj.coordinates[1]*this.sizeFactor,obj.coordinates[2]*this.sizeFactor,obj.coordinates[3]*this.sizeFactor);
+      this.ctx.fillRect(
+        obj.coordinates[0] * this.sizeFactor,
+        obj.coordinates[1] * this.sizeFactor,
+        obj.coordinates[2] * this.sizeFactor,
+        obj.coordinates[3] * this.sizeFactor);
     }
-
-    let defaultWidth = this.baseImg.nativeElement.width
-    console.log("local width", defaultWidth);
  }
 
  defaultWidth: number = null;
