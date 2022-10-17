@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.leftPart{
+    max-height: 90vh;
+    overflow: auto;
+    background: lightgoldenrodyellow;
+}
+
+.myCanvas{
+    border: 0.01px solid black;
+    z-index: 1;
+    position: relative;
+}
+
+.baseImg{
+    position: absolute;
+}
+
+.parentDiv{
+    position: relative;
+    overflow: auto;
+}
