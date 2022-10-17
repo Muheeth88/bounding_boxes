@@ -35,7 +35,6 @@ ngOnInit(): void {
 
     let defaultWidth = this.baseImg.nativeElement.width
     console.log("local width", defaultWidth);
-
  }
 
  defaultWidth: number = null;
@@ -71,14 +70,13 @@ handleZoomOut() {
 }
 
 drag: boolean = false;
-selection: boolean  = false;
+
 rect = {
   startX: null,
   startY: null,
   width: null,
-  height: null
+  height: null,
 };
-selectedContent = []
 
 onMouseDown(event: any) {
   console.log("mouseDown>>>>>>>>", event);
@@ -94,7 +92,6 @@ onMouseUp() {
 onDblClick(){
   this.clearCanvas();
   this.drag = false;
-  this.selection = false;
 }
 
 onMouseMove(event:any) {
@@ -105,5 +102,9 @@ onMouseMove(event:any) {
       this.ctx.strokeRect(this.rect.startX, this.rect.startY, this.rect.width, this.rect.height);
     }
 }
+
+
+
+
 
 }
