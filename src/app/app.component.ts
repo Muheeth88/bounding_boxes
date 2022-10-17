@@ -46,18 +46,15 @@ gettingCoordinates() {
   this.ctx.setLineDash([6]);
 
   // -------------------- To  view all bounding Boxes (static)
-    for (let i = 0; i < coordinates.length; i++) {
-      let obj = coordinates[i];
-      this.ctx.fillRect(
-        obj.coordinates[0] * this.sizeFactor,
-        obj.coordinates[1] * this.sizeFactor,
-        obj.coordinates[2] * this.sizeFactor,
-        obj.coordinates[3] * this.sizeFactor);
-    }
+    // for (let i = 0; i < coordinates.length; i++) {
+    //   let obj = coordinates[i];
+    //   this.ctx.fillRect(
+    //     obj.coordinates[0] * this.sizeFactor,
+    //     obj.coordinates[1] * this.sizeFactor,
+    //     obj.coordinates[2] * this.sizeFactor,
+    //     obj.coordinates[3] * this.sizeFactor);
+    // }
  }
-
- 
-
 
 
 drag: boolean = false;
