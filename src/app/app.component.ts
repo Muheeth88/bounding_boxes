@@ -18,25 +18,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   defaultWidth: number = null;
   zoomingLevel: number = 1;
   sizeFactor: number = 1;
-
-  x1: number;
-  y1: number;
-  width: number;
-  height: number;
   
-ngOnInit(): void {
-  this.gettingCoordinates()
-}
-
-gettingCoordinates() {
-  for(let i = 0; i < coordinates.length; i++) {
-    this.x1 = coordinates[i].coordinates[0]
-    this.y1 = coordinates[i].coordinates[1]
-    this.width = coordinates[i].coordinates[2]
-    this.height = coordinates[i].coordinates[3]
-    console.log("coordinates are",this.x1, this.y1, this.width, this.height);
-  }
-}
+ngOnInit(): void {}
   
  ngAfterViewInit(): void {
   this.ctx = this.canvas.nativeElement.getContext('2d');
