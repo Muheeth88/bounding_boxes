@@ -27,16 +27,6 @@ ngOnInit(): void {}
   this.ctx.strokeStyle = "blue"
   this.ctx.globalAlpha = 0.3;
   this.ctx.setLineDash([6]);
-
-  // -------------------- To  view all bounding Boxes (static)
-    // for (let i = 0; i < coordinates.length; i++) {
-    //   let obj = coordinates[i];
-    //   this.ctx.fillRect(
-    //     obj.coordinates[0] * this.sizeFactor,
-    //     obj.coordinates[1] * this.sizeFactor,
-    //     obj.coordinates[2] * this.sizeFactor,
-    //     obj.coordinates[3] * this.sizeFactor);
-    // }
  }
 
 
@@ -77,22 +67,22 @@ onMouseMove(event:any) {
       this.selection = true;  
       let count = 0 
       let result = []
-      for( let i = 0; i < coordinates.length; i++ ) {
-        let x1 = coordinates[i].coordinates[0]  
-        let y1 = coordinates[i].coordinates[1] 
-        let width = coordinates[i].coordinates[2] 
-        let height = coordinates[i].coordinates[3] 
+      for( let i = 0; i < coordinates.length; i++) {
+        let x1 = (coordinates[i].coordinates[0]) * this.sizeFactor
+        let y1 = (coordinates[i].coordinates[1])* this.sizeFactor
+        let width = (coordinates[i].coordinates[2])* this.sizeFactor
+        let height = (coordinates[i].coordinates[3])* this.sizeFactor
         if(
-          (x1 * this.sizeFactor >= this.rect.startX && (x1 * this.sizeFactor + width * this.sizeFactor) <= (this.rect.startX + this.rect.width) &&
-          y1  * this.sizeFactor>= this.rect.startY && (y1  * this.sizeFactor+ height * this.sizeFactor) <= (this.rect.startY + this.rect.height) ) || 
-          ( x1  * this.sizeFactor<= this.rect.startX && (x1 * this.sizeFactor + width * this.sizeFactor) >= (this.rect.startX + this.rect.width) &&
-          y1 * this.sizeFactor <= this.rect.startY && (y1 * this.sizeFactor + height * this.sizeFactor) >= (this.rect.startY + this.rect.height)) ||
-          ( y1 * this.sizeFactor >= this.rect.startY && (y1 * this.sizeFactor + height * this.sizeFactor) <= (this.rect.startY + this.rect.height) &&
-          x1 * this.sizeFactor <= this.rect.startX && (x1 * this.sizeFactor >= (this.rect.startX + this.rect.width))) ||
-          ( x1 * this.sizeFactor >= this.rect.startX && (x1 * this.sizeFactor + width * this.sizeFactor) <= (this.rect.startX + this.rect.width) &&
-          y1 * this.sizeFactor <= this.rect.startY && (y1 * this.sizeFactor >= (this.rect.startY + this.rect.height))) 
+          (x1 >= this.rect.startX && (x1 + width ) <= (this.rect.startX + this.rect.width) &&
+          y1 >= this.rect.startY && (y1 + height ) <= (this.rect.startY + this.rect.height) ) || 
+          ( x1 <= this.rect.startX && (x1 + width ) >= (this.rect.startX + this.rect.width) &&
+          y1 <= this.rect.startY && (y1 + height ) >= (this.rect.startY + this.rect.height)) ||
+          ( y1 >= this.rect.startY && (y1 + height ) <= (this.rect.startY + this.rect.height) &&
+          x1 <= this.rect.startX && (x1 >= (this.rect.startX + this.rect.width))) ||
+          ( x1 >= this.rect.startX && (x1 + width) <= (this.rect.startX + this.rect.width) &&
+          y1 <= this.rect.startY && (y1 >= (this.rect.startY + this.rect.height))) 
         ) {
-          this.ctx.fillRect(x1 * this.sizeFactor, y1 * this.sizeFactor, width * this.sizeFactor, height * this.sizeFactor);
+          this.ctx.fillRect(x1 , y1 , width , height );
           result[count]=coordinates[i].value;
           count++;
           this.selectedContent = result;
@@ -104,17 +94,17 @@ onMouseMove(event:any) {
       let mouseXcoordinates = ((event.clientX - rect.left) / (rect.right - rect.left)) * this.canvas.nativeElement.width;
       let mouseYcoordinates = ((event.clientY - rect.top) / (rect.bottom - rect.top)) * this.canvas.nativeElement.height;
       for (let i = 0; i < coordinates.length; i++) {
-        let x1 = coordinates[i].coordinates[0]
-        let y1 = coordinates[i].coordinates[1]
-        let width = coordinates[i].coordinates[2]
-        let height = coordinates[i].coordinates[3]
+        let x1 = (coordinates[i].coordinates[0]) * this.sizeFactor
+        let y1 = (coordinates[i].coordinates[1])* this.sizeFactor
+        let width = (coordinates[i].coordinates[2])* this.sizeFactor
+        let height = (coordinates[i].coordinates[3])* this.sizeFactor
         if( 
           mouseXcoordinates >= x1 && mouseXcoordinates <= (x1 + width) &&
           mouseYcoordinates >= y1 && mouseYcoordinates <= (y1 + height) ) {
-          this.ctx.clearRect( x1 * this.sizeFactor, y1 * this.sizeFactor, width * this.sizeFactor, height * this.sizeFactor)
-          this.ctx.fillRect(x1 * this.sizeFactor, y1 * this.sizeFactor, width * this.sizeFactor, height * this.sizeFactor);
+          this.ctx.clearRect( x1 , y1, width, height )
+          this.ctx.fillRect(x1, y1, width , height );
          } else {
-            this.ctx.clearRect( x1 * this.sizeFactor, y1 * this.sizeFactor, width * this.sizeFactor, height * this.sizeFactor)
+            this.ctx.clearRect( x1, y1, width, height)
          }
       } 
     }
